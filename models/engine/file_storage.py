@@ -1,5 +1,6 @@
-#!/usr/bin/python3
-""" Thi is is the file storage class for AirBnB"""
+#!/usr/bin/pythoin3
+"""This module defines a class to manage file storage for hbnb clone"""
+
 import json
 
 
@@ -8,17 +9,19 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    @property
+    def cities(self):
+        """Retruns Cities in state"""
+
 
     def delete(self, obj=None):
-        """loop through __objects, compare each value of
-	key with cls argument wich is object
-	"""
+        """loop through __objects, compare each value of key with cls argument wich is object"""
         if obj:
             id = obj.to_dict()["id"]
             className = obj.to_dict()["__class__"]
             keyName = className+"."+id
             if keyName in FileStorage.__objects:
-                del (FileStorage.__objects[keyName])
+                del(FileStorage.__objects[keyName])
                 self.save()
 
     def all(self, cls=None):
