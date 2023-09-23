@@ -1,59 +1,30 @@
 #!/usr/bin/python3
 """State Module for HBNB project """
-from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String
+from models import storage
+from os import getenv
 import models
-from models.city import City
-
 
 class State(BaseModel, Base):
-    """ State class """
-    __tablename__ = "states"
+    """ State class """	    """ State class """
+    name = ""	    __tablename__ = 'states'
+
     name = Column(String(128), nullable=False)
-    cities = relationship("City", backref='state',
-                          cascade='all, delete, delete-orphan')
 
-    @property
-    def cities(self):
-        """
-        returns the list of City instances with state_id equals
-        to the current State.id
-        """
-        from models import storage
-        related_cities = []
-        cities = storage.all(City)
-        for city in cities.values():
-            if city.state_id == self.id:
-                related_cities.append(city)
-        return related_cities#!/usr/bin/python3
-""" State Module for HBNB project """
-from sqlalchemy.ext.declarative import declarative_base
-from models.base_model import BaseModel, Base
-from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String
-import models
-from models.city import City
-
-
-class State(BaseModel, Base):
-    """ State class """
-    __tablename__ = "states"
-    name = Column(String(128), nullable=False)
-    cities = relationship("City", backref='state',
-                          cascade='all, delete, delete-orphan')
-
-    @property
-    def cities(self):
-        """
-        returns the list of City instances with state_id equals
-        to the current State.id
-        """
-        from models import storage
-        related_cities = []
-        cities = storage.all(City)
-        for city in cities.values():
-            if city.state_id == self.id:
-                related_cities.append(city)
-        return related_cities
+    if getenv("HBNB_TYPE_STORAGE") == "db":
+        cities = relationship("City", backref='state',
+                              cascade="all, delete-orphan")
+    else:
+        @property
+        def cities(self):
+            """
+            returns list of city instances with state_id ==
+            current State.id
+            """
+            city_instance = storage.all("City").values()
+            return [city for city in city_instance if city.state_id == self.id]
+ Empty file modified0  
+models/user.py
+ 100644 → 100755
