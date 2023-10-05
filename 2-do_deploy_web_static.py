@@ -20,7 +20,7 @@ env.key_filename = "~/.ssh/id_rsa"
 
 @runs_once
 def do_pack():
-    """  
+    """
         method doc
         fab -f '2-do_deploy_web_static'.
     """

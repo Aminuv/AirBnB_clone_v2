@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" generates a .tgz archive
+"""
+    generates a .tgz archive
 """
 from fabric.api import local
 from datetime import datetime
@@ -8,8 +9,8 @@ from fabric.decorators import runs_once
 
 @runs_once
 def do_pack():
-    """ 
-    method doc
+    """
+        method doc.
     """
 
     local("mkdir -p versions")

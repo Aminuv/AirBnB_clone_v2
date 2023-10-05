@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
     generates a .tgz archive
 """
 from datetime import datetime
@@ -17,7 +17,7 @@ env.key_filename = "~/.ssh/id_rsa"
 
 @runs_once
 def do_pack():
-    """ 
+    """
       The fabfile to create and distribute an archive to a web server.
     """
 
