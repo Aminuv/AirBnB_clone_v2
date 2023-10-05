@@ -1,28 +1,25 @@
 #!/usr/bin/python3
+""" generates a .tgz archive
 """
-   The generates a 'tgz' archive.
-"""
-
-from datetime import datetime
 from fabric.api import local, env, put, run
+from datetime import datetime
 from os import path
 from fabric.decorators import runs_once
 
 
 env.hosts = ['52.90.14.193', '54.90.50.39']
 
-# Set username
+# Set the username
 env.user = "ubuntu"
 
-# Set The private key.
+# Set private key path
 env.key_filename = "~/.ssh/id_rsa"
 
 
 @runs_once
 def do_pack():
-    """
-        method doc
-        fab -f '2-do_deploy_web_static'.
+    """ generates a .tgz archive from the contents of
+    the web_static folder of your AirBnB Clone repo
     """
 
     local("mkdir -p versions")
@@ -36,9 +33,7 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """
-        a distributes of an archive to the web servers.
-    """
+    """distributes an archive to your web servers"""
 
     try:
         if not path.exists(archive_path):
