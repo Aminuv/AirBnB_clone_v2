@@ -8,7 +8,7 @@ from fabric.decorators import runs_once
 from fabric.api import local, env, put, run
 
 
-env.hosts = ['54.90.50.39', '52.90.14.193']
+env.hosts = ['52.90.14.193', '54.90.50.39']
 
 env.user = "ubuntu"
 
