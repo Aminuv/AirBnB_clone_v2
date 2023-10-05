@@ -9,7 +9,7 @@ from os import path
 from fabric.decorators import runs_once
 
 
-env.hosts = ['52.90.14.193', '54.90.50.39']
+env.hosts = ['54.90.50.39', '52.90.14.193']
 
 # Set username
 env.user = "ubuntu"
