@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bash script that sets up your web servers for the deployment of web_static
+# The Bash script that sets up your web servers for the deployment of 'web_static'.
 
 echo -e "\e[1;35m START CONFIGURATION\e[0m\n"
 
@@ -14,7 +14,7 @@ sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 echo -e "\e[1;35m Directories created\e[0m\n"
 echo "<h1>Welcome to hajaralx.tech site</h1>" > /data/web_static/releases/test/index.html
 echo -e "\e[1;35m Simple content page added\e[0m\n"
-# current
+# The current
 if [ -d /data/web_static/current ];
 then
 	echo "Remove the existing /data/web_static/current"
@@ -22,7 +22,7 @@ then
 fi;
 echo -e "\e[1;35m The existing of /data/web_static/current dir checked\e[0m\n"
 
-# data web
+# The data web
 sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 echo -e "\e[1;35m Symbolic link created\e[0m\n"
 sudo chown -hR ubuntu:ubuntu /data
