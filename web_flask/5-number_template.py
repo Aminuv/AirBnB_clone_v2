@@ -38,7 +38,7 @@ def disp_num(n):
 
 @app.route('/number_template/<int:n>')
 def disp_num_temp(n):
-    return render_template('5-number.html', n=n)
+    return render_template('5-number.html', number=n)
 
 
 if __name__ == '__main__':
