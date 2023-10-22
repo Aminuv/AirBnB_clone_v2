@@ -38,7 +38,6 @@ def disp_num(n):
 
 @app.route('/number_template/<int:n>')
 def disp_num_temp(n):
-     """ display a HTML"""
     return render_template('5-number.html', number=n)
 
 
@@ -50,7 +49,6 @@ def disp_even_odd(n):
     else:
         p = 'odd'
     return render_template('6-number_odd_or_even.html', number=n, parity=p)
-
 
 
 if __name__ == '__main__':
