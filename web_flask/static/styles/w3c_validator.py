@@ -19,7 +19,7 @@ def __print_stderr(msg):
 
 
 def __analyse_html(file_path):
-    """Start analyse of HTML file
+    """ to Start analyse of HTML file
     """
     h = {'Content-Type': "text/html; charset=utf-8"}
     d = open(file_path, "rb").read()
@@ -47,7 +47,7 @@ def __analyse_css(file_path):
 
 
 def __analyse(file_path):
-    """Start analyse of a file and print the result
+    """ to Start analyse of a file and print the result
     """
     nb_errors = 0
     try:
@@ -70,7 +70,7 @@ def __analyse(file_path):
 
 
 def __files_loop():
-    """Loop that analyses for each file from input arguments
+    """ for Loop that analyses for each file from input arguments
     """
     nb_errors = 0
     for file_path in sys.argv[1:]:
@@ -86,6 +86,6 @@ if __name__ == "__main__":
         __print_stderr("usage: w3c_validator.py file1 file2 ...\n")
         exit(1)
 
-    """execute tests, then exit. Exit status = # of errors (0 on success)
+    """for execute tests, then exit. Exit status = # of errors (0 on success)
     """
     sys.exit(__files_loop())
