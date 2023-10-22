@@ -37,7 +37,7 @@ def disp_num(n):
 
 
 @app.route('/number_template/<int:n>')
-def desp_num_temp(n):
+def disp_num_temp(n):
     return render_template('5-number.html', number=n)
 
 
