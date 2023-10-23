@@ -60,12 +60,5 @@ def close(error):
     storage.close()
 
 
-@app.route('/cities_by_states', strict_slashes=False)
-def cities_states():
-    """ city by states """
-    states = storage.all(State)
-    return render_template('8-cities_by_states.html', states=states)
-
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
