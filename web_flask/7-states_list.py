@@ -15,7 +15,7 @@ def disp_state():
 
 @app.teardown_appcontext
 def teardown(excep):
-    """Call Storage.close method"""
+    """ Storage.close """
     storage.close()
 
 
