@@ -1,63 +1,21 @@
 #!/usr/bin/python3
 """ Module to start a flask web app """
-from flask import Flask
-from flask import render_template
-from models import storage
+from flask import Flask, render_template
 from models.state import State
+from models import storage
 app = Flask(__name__)
 
 
-@app.route("/", strict_slashes=False)
-def Home():
-    """ display Hello HBNB """
-    return "Hello HBNB!"
-
-
-@app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """ display HBNB """
-    return "HBNB"
-
-
-@app.route('/c/<text>', strict_slashes=False)
-def text_c(text):
-    """ C is called """
-    return "C " + text.replace('_', ' ')
-
-
-@app.route('/python', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
-def python(text):
-    """ display doc paythone """
-    return 'Python {}'.format(text.replace("_", " "))
-
-
-@app.route('/number/<int:n>', strict_slashes=False)
-def disp_num(n):
-    """ desplay the doc number """
-    return '{} is a number'.format(n)
-
-
-@app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
-def disp_even_odd(n):
-    """display HTML Page with Number """
-    if n % 2 == 0:
-        p = 'even'
-    else:
-        p = 'odd'
-    return render_template('6-number_odd_or_even.html', number=n, parity=p)
-
-
-@app.route('/states_list', strict_slashes=False)
-def states_list():
-    """ state list it """
-    states = storage.all(State)
-    return render_template('7-states_list.html', states=states)
+@app.route("/states_list", strict_slashes=False)
+def display_state():
+    """return an HTML Page that displays all states"""
+    states = sorted(storage.all(State).values(), key=lambda x: x.name)
+    return render_template("7-states_list.html", states=states)
 
 
 @app.teardown_appcontext
-def close(error):
-    """ clese it """
+def teardown(excep):
+    """Call Storage.close method"""
     storage.close()
 
 
