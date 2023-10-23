@@ -38,11 +38,6 @@ def disp_num(n):
     return '{} is a number'.format(n)
 
 
-@app.route('/number_template/<int:n>')
-def disp_num_temp(n):
-    return render_template('5-number.html', number=n)
-
-
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def disp_even_odd(n):
     """display HTML Page with Number """
@@ -52,19 +47,18 @@ def disp_even_odd(n):
         p = 'odd'
     return render_template('6-number_odd_or_even.html', number=n, parity=p)
 
-
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    """ statut list it """
+    """ state list it """
     states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
 
 @app.teardown_appcontext
 def close(error):
-    """ Close """
+    """ clese it """
     storage.close()
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
