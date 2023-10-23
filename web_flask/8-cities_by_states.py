@@ -32,12 +32,6 @@ def python(text):
     return 'Python {}'.format(text.replace("_", " "))
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def disp_num(n):
-    """ desplay the doc number """
-    return '{} is a number'.format(n)
-
-
 @app.route('/number_template/<int:n>')
 def disp_num_temp(n):
     return render_template('5-number.html', number=n)
