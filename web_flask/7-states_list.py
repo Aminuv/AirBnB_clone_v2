@@ -47,6 +47,7 @@ def disp_even_odd(n):
         p = 'odd'
     return render_template('6-number_odd_or_even.html', number=n, parity=p)
 
+
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ state list it """
