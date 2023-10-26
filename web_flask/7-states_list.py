@@ -4,12 +4,13 @@
 from flask import Flask, render_template
 from models.state import State
 from models import storage
+
 app = Flask(__name__)
 
 
 @app.route("/states_list", strict_slashes=False)
 def display_state():
-    """display an 'HTML' Page """
+    """ Display an' HTM'L Page. """
     states = sorted(storage.all(State).values(), key=lambda x: x.name)
     return render_template("7-states_list.html", states=states)
 
